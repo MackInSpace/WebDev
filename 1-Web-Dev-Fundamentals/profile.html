@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Mackey's Profile</title>
+</head>
+<body>
+    <h1>Adam Mackey's Profile</h1>
+    <div>
+        <img src="images/picofme.jpg" height="500" alt="picture or Adam Mackey"><br>
+    </div>
+    <audio controls loop>
+        <source src="mp3s/sample-6s.mp3" type="audio/mp3">
+        <p>Your browser does not support HTML5 audio. Here is a <a href="mp3s/sample-6s.mp3" target="_blank">a link to the audio file</a> instead.</p>
+    </audio>
+    <div>
+        <h2>About Me</h2>
+        <ul>
+            <li>I live in Denver, Colorado.</li>
+            <li>I was born in the Northern Pennisula of Michigan.</li>
+            <li>My current occupation is Sales in the healthcare field.</li>
+            <li>I started to learn how to code last year.</li>
+            <li>One goal that I would like to accomplish is to travel the world.</li>
+        </ul>
+    </div>
+    <div>
+        <h2>Interests</h2>
+        <ul>
+            <li>Hiking and Biking</li>
+            <li>Snowboarding, <em>because I live in CO</em>.</li>
+            <li>Gaming, my favorite game has been <a href="https://www.bungie.net/7/en/destiny" target="_blank">Destiny 2</a>.<br><a href="https://en.wikipedia.org/wiki/Destiny_2" target="_blank"><img src="images/destiny2.jpg" height="200" alt="destiny picture"></a></li>
+            <li>Camping and having fun outdoor activities.</li>
+        </ul>
+    </div>
+    <div>
+        <h2>Education</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>School Name</th>
+                    <th>Education Level</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Excelsior Springs</td>
+                    <td>High School</td>
+                    <td>Kansas City, MO</td>
+                </tr>
+                <tr>
+                    <td>Lake Superior State University</td>
+                    <td>College</td>
+                    <td>Sault Ste. Marie, MI</td>
+                </tr>
+                <tr>
+                    <td>NuCamp</td>
+                    <td>Bootcamp</td>
+                    <td>Remote</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h2>Contact Me</h2>
+        <form action="https://us-central1-nucamp-production.cloudfunctions.net/post/formdata" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Your Information</legend>
+                <div>
+                    <label for="firstName">First Name</label>
+                    <input name="firstName" id="firstName" placeholder="Your First Name" required>
+                </div>
+                <div>
+                    <label for="lastName">Last Name</label>
+                    <input name="lastName" id="lastName" placeholder="Your Last Name" required>
+                </div>
+                <div>
+                    <label for="email">Your Email</label>
+                    <input name="email" id="email" placeholder="Your Email Address" required>
+                </div>    
+            </fieldset>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>

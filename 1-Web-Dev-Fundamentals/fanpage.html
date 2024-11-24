@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rockstar Games Fan Page</title>
+</head>
+<body>
+    <img src="images/rockstargames.png" alt="rockstar_games_logo"/>
+    <h1>Rockstar Games Fan Page</h1>
+    <h2>Popular Titles</h2>
+    <ul>
+        <li>Grand Theft Auto</li>
+        <li>Red Dead Redemption</li>
+        <li>Max Payne</li>
+        <li>Midnight Club</li>
+        <li>Bully</li>
+    </ul>
+    <h3>Here is a link to their <a href="https://www.rockstargames.com/" target="_blank">Website</a>.</h3>
+    <h2>Upcoming Games</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>ETA</th>
+                <th>Platform</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <tr>
+                <td>Grand Theft Auto</td>
+                <td>Summer 2025</td>
+                <td>All</td>
+            </tr>
+            <tr>
+                <td>Red Dead Redemption</td>
+                <td>October 29th</td>
+                <td>PC</td>
+            </tr>
+            <tr>
+                <td>GTA: New Ludendorff</td>
+                <td>Available Now</td>
+                <td>All</td>
+            </tr>
+        </tbody>       
+    </table>
+    <h2>Survey</h2>
+    <form action="https://us-central1-nucamp-production.cloudfunctions.net/post/formdata" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend><strong>Your Information</strong></legend>
+            <div>
+                <label for="firstName">First Name</label>
+                <input name="firstName" id="firstName" placeholder="Your First Name">
+            </div>
+            <div>
+                <label for="lastName">Last Name</label>
+                <input name="lastName" id="lastName" placeholder="Your Last Name"/>
+            </div>
+            <div>
+                <label for="email">Your Email</label>
+                <input name="email" id="email" placeholder="Your Email Address"/>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><strong>Survey Questions</strong></legend>
+            <div>
+                Favorite Video Game:
+                <input type="radio" id="grandtheftauto" name="game" value="grandtheftauto">
+                <label for="grandtheftauto">Grand Theft Auto</label>
+                <input type="radio" id="reddeadredemption" name="game" value="reddeadredemption">
+                <label for="reddeadredemption">Red Dead Redemption</label>
+                <input type="radio" id="maxpayne" name="game" value="maxpayne">
+                <label for="maxpayne">Max Payne</label>
+                <input type="radio" id="midnightclub" name="game" value="midnightclub">
+                <label for="midnightclub">Midnight Club</label>
+                <input type="radio" id="bully" name="game" value="bully">
+                <label for="bully">Bully</label>
+            </div>
+            <div>
+                Consols You Own:
+                <input type="checkbox" id="xbox" name="consol" value="xbox">
+                <label for="xbox">XBox</label>
+                <input type="checkbox" id="playstation" name="consol" value="playstation">
+                <label for="playstation">Playstation</label>
+                <input type="checkbox" id="pc" name="consol" value="pc">
+                <label for="pc">PC</label>
+            </div>
+        </fieldset>
+        <input type="submit">
+    </form>
+</body>
+</html>

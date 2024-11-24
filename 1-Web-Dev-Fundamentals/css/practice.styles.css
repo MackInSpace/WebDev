@@ -1,0 +1,45 @@
+body {
+    background: #b4eeca;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+h1 {
+    color: blueviolet;
+    font: 32px Garamond, Helvetica, serif;
+    padding: 10px;
+    border: 10px;
+}
+
+table {
+    width: 50%;
+}
+
+thead {
+    text-align: left;
+    background-color: rgb(192, 57, 57);
+}
+
+tbody {
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+label {
+    display: block;
+}
+
+#submit-btn {
+    display: block;
+    background-color: blue;
+    color: white;
+}
+
+section {
+    border: 10px, 20px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: darkmagenta;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 12px;
+    margin: 10px;
+}
