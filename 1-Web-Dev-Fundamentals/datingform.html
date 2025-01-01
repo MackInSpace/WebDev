@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dating Website</title>
-</head>
-<style>
+    <style>
     body {
         font-family: Verdana, Arial, sans-serif;
     }
@@ -62,7 +61,8 @@
     div:hover {
         color: blue;
     }
-</style>
+    </style>
+</head>
 <body>
     <h1>Enter Your Details For Our Dating Website</h1>
     <form class="datingwebsite" action="https://us-central1-nucamp-production.cloudfunctions.net/post/formdata" method="post" enctype="multipart/form-data">
@@ -107,7 +107,7 @@
             <div>
                 <label for="country">Country:</label>
                 <select id="country" name="country">
-                    <option>Choose a Country</option>
+                    <option value="country">Choose a Country</option>
                     <option value="brazil">Brazil</option>
                     <option value="france">France</option>
                     <option value="japan">Japan</option>

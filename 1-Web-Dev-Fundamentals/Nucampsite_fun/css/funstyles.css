@@ -1,0 +1,54 @@
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: "Lobster", cursive;
+}
+
+h2 {
+    color: #004085;
+}
+
+header {
+    padding: 2 rem;
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+header h2 {
+    color: #ffc107;
+}
+
+footer {
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 20px 0;
+}
+
+.row-content {
+    padding: 50px 0;
+    border-bottom: 1px ridge;
+    min-height: 200px;
+}
+
+.navbar {
+    background-color: #f8f9fa;
+}
+
+.navbar-toggler {
+    margin-left: auto;
+}
+
+.accordion-button {
+    background-color: #abd5db;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+}
+
+.carousel {
+    border: solid #ffc107;
+}
