@@ -4,4 +4,5 @@ function getName () {
 }
 function sayHello (name) {
     alert ('Hello ' + name + '!');
+    console.log('Alert sent!');
 }
