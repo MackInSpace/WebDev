@@ -5,10 +5,14 @@
     <title>JavaScript Hello World</title>
 </head>
 <body>
-    <button type="button" onclick="sayHello()">Click Me</button>
+    <button type="button" onclick="getName()">Click Me</button>
     <script>
-        function sayHello () {
-        alert ('Hello World!');
+        function getName () {
+            const userName = prompt('What is your name?');
+            sayHello(userName)
+        }
+        function sayHello (name) {
+            alert ('Hello ' + name + '!');
     }
     </script>
 </body>
