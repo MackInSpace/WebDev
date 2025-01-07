@@ -10,7 +10,11 @@ function rollDice() {
         if (roll < 5) {
             continue;
         }
-        alert('Congratulations, you win ' + roll + ' gold coins!');
+        if (roll === 4 && goldCoins > 0) {
+            goldCoins -= 1;
+            alert('You rolled a 4. You lose 1 gold coin. You now have ' + goldCoins + ' gold coins.');
+        }
+        alert('Congratulations, you win ' + roll + ' gold coins! You now have a total of ' + goldCoins + ' gold coins.');
         goldCoins += roll;
     }
     alert('You have won a total of ' + goldCoins + ' gold coins!');
