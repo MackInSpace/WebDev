@@ -6,5 +6,43 @@
 </head>
 <body>
     <h1>Color Guessing Game</h1>
+    <button type="button" onclick="runGame()">Start Game</button>
+    <script>
+        const COLORS_ARRAY = ['blue','cyan','gold','green','magenta','orange','red','white','yellow'];
+        console.log(COLORS_ARRAY);
+
+        function runGame() {
+            
+            let guess = '';
+            let correct = false;
+            let numTries = 0;
+
+            const targetIndex = Math.floor(Math.random() * COLORS_ARRAY.length);
+            const target = COLORS_ARRAY[target];
+            
+            console.log('Target color:', target);
+
+            do {
+                guess = prompt('I am thinking of one of these colors:\n\n' + COLORS_ARRAY + '\n\nWhat color am I thinking of?\n');
+
+                if (guess === null(guess)) {
+                    alert('You are about to cancel the game, click OK.'); //maybe edit
+                }
+                return;
+
+                numTries += 1;
+                correct = checkGuess(guess,target);
+            } while (!correct);
+
+            alert('Congratulations! You have guessed the color! \n\nIt took you ' + numTries + ' tries to finish the game! \n\nHit OK to see the color in the background');
+        }
+
+        function checkGuess(guess,target) {
+
+            //if (!=guess) {
+            //    alert("Sorry, I don't recognize that color. \n\nPlease try again.");
+           // }
+        }
+    </script>
 </body>
 </html>
