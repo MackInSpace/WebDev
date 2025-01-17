@@ -26,6 +26,27 @@ function updateTicker(price, crypto) {
     tickerElement.textContent = `${crypto.toUpperCase()} Price: $${price}`;
 }
 
+function addFavorite(crypto) {
+    let favorites = JSON.parse(localStorage.getItem('favoriteCryptos')) || [];
+    if (!favorites.includes(crypto)) {
+        favorites.push(crypto);
+        localStorage.setItem('favoriteCryptos', JSON.stringify(favorites));
+        displayFavorites();
+    }
+}
+
+function displayFavorites() {
+    const favorites = JSON.parse(localStorage.getItem('favoriteCryptos')) || [];
+    const favoriteCoinsElement = document.getElementById('favorite-coins');
+    favoriteCoinsElement.innerHTML = '';
+    favorites.forEach(crypto => {
+        const favoriteElement = document.createElement('div');
+        favoriteElement.textContent = crypto.toUpperCase();
+        favoriteElement.addEventListener('click', () => startTicker(crypto));
+        favoriteCoinsElement.appendChild(favoriteElement);
+    });
+}
+
 async function startTicker(crypto) {
     try {
         const price = await fetchCryptoPrices(crypto);
@@ -38,7 +59,9 @@ async function startTicker(crypto) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    displayFavorites();
     const searchButton = document.getElementById('search-button');
+    const addFavoriteButton = document.getElementById('add-favorite-button');
     searchButton.addEventListener('click', () => {
         const cryptoInput = document.getElementById('crypto-input').value.trim().toLowerCase();
         console.log('User input:', cryptoInput); // Debugging line
@@ -47,6 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const tickerElement = document.getElementById('crypto-ticker');
             tickerElement.textContent = 'Please enter a cryptocurrency.';
+        }
+    });
+    addFavoriteButton.addEventListener('click', () => {
+        const cryptoInput = document.getElementById('crypto-input').value.trim().toLowerCase();
+        if (cryptoInput) {
+            addFavorite(cryptoInput);
         }
     });
 });
