@@ -15,6 +15,27 @@ body {
     border-radius: 10px;
 }
 
+#crypto-input {
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#search-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0066cc;
+    color: white;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: #004b99;
+}
+
 #crypto-ticker {
     font-size: 1.2em;
+    margin-top: 20px;
 }
