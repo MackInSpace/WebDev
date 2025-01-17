@@ -7,18 +7,25 @@ const cryptoIdMapping = {
 
 async function fetchCryptoPrices(crypto) {
     const cryptoId = cryptoIdMapping[crypto] || crypto;
-    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=usd`;
+    const proxyUrl = 'https://api.allorigins.win/get?url=';
+    const url = `${proxyUrl}${encodeURIComponent(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=usd`)}`;
     console.log('Fetching URL:', url); // Debugging line
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error('Failed to fetch data');
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const jsonResponse = await response.json();
+        const data = JSON.parse(jsonResponse.contents);
+        console.log('API Response:', data); // Debugging line
+        if (!data[cryptoId] || !data[cryptoId].usd) {
+            throw new Error(`No price data found for ${cryptoId}`);
+        }
+        return data[cryptoId].usd;
+    } catch (error) {
+        console.error('Fetch Error:', error.message); // More detailed error message
+        throw new Error('Failed to fetch data. Please try again later.');
     }
-    const data = await response.json();
-    console.log('API Response:', data); // Debugging line
-    if (!data[cryptoId] || !data[cryptoId].usd) {
-        throw new Error(`No price data found for ${cryptoId}`);
-    }
-    return data[cryptoId].usd;
 }
 
 function updateTicker(price, crypto) {
@@ -79,3 +86,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
