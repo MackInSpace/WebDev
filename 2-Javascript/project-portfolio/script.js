@@ -2,6 +2,9 @@ const cryptoIdMapping = {
     'btc': 'bitcoin',
     'eth': 'ethereum',
     'ltc': 'litecoin',
+    'sol': 'solana',
+    'bnb': 'bnb',
+    'cardano': 'ada',
     // Add more mappings as needed
 };
 
