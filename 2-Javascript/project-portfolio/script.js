@@ -3,10 +3,14 @@ const cryptoIdMapping = {
     'eth': 'ethereum',
     'ltc': 'litecoin',
     'sol': 'solana',
-    'bnb': 'bnb',
-    'cardano': 'ada',
-    // Add more mappings as needed
+    'bnb': 'binancecoin', 
+    'ada': 'cardano',
+    'xrp': 'ripple',
+    'doge': 'dogecoin',
+    'dot': 'polkadot',
+    'uni': 'uniswap',
 };
+
 
 async function fetchCryptoPrices(crypto) {
     const cryptoId = cryptoIdMapping[crypto] || crypto;
@@ -89,4 +93,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
