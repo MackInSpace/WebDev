@@ -16,7 +16,7 @@ async function fetchCryptoPrices(crypto) {
     const cryptoId = cryptoIdMapping[crypto] || crypto;
     const proxyUrl = 'https://api.allorigins.win/get?url=';
     const url = `${proxyUrl}${encodeURIComponent(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=usd`)}`;
-    console.log('Fetching URL:', url); // Debugging line
+    console.log('Fetching URL:', url); 
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -24,13 +24,13 @@ async function fetchCryptoPrices(crypto) {
         }
         const jsonResponse = await response.json();
         const data = JSON.parse(jsonResponse.contents);
-        console.log('API Response:', data); // Debugging line
+        console.log('API Response:', data); 
         if (!data[cryptoId] || !data[cryptoId].usd) {
             throw new Error(`No price data found for ${cryptoId}`);
         }
         return data[cryptoId].usd;
     } catch (error) {
-        console.error('Fetch Error:', error.message); // More detailed error message
+        console.error('Fetch Error:', error.message); 
         throw new Error('Failed to fetch data. Please try again later.');
     }
 }
@@ -66,7 +66,7 @@ async function startTicker(crypto) {
         const price = await fetchCryptoPrices(crypto);
         updateTicker(price, crypto);
     } catch (error) {
-        console.error(error); // Debugging line
+        console.error(error); 
         const tickerElement = document.getElementById('crypto-ticker');
         tickerElement.textContent = 'Failed to fetch data. Please try again.';
     }
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addFavoriteButton = document.getElementById('add-favorite-button');
     searchButton.addEventListener('click', () => {
         const cryptoInput = document.getElementById('crypto-input').value.trim().toLowerCase();
-        console.log('User input:', cryptoInput); // Debugging line
+        console.log('User input:', cryptoInput); 
         if (cryptoInput) {
             startTicker(cryptoInput);
         } else {
