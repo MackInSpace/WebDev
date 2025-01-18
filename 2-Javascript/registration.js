@@ -50,5 +50,4 @@ const runTest = (bootcamp, student) => {
         console.log('TASK 3: PASS');
     }
 };
-
 runTest(reactBootcamp, testStudent);
