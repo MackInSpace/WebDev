@@ -1,0 +1,31 @@
+body {
+    font-family: 'Verdana', sans-serif;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url(img/cryptocurrency\ background.png);
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #fff; 
+    text-shadow: 1px 1px 2px #000; /
+}
+
+.crypto-ticker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.crypto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: #fff;
+}
