@@ -18,15 +18,37 @@
     <form id="myForm">
         <label for="item">Add an item:</label>
         <input id="item" type="text" name="item">
-        <button>Add</button>
+        <button type="button" onclick="getItem(event)">BUTTON</button>
     </form>
     <ul id="shoppingList">
         <!-- list items will go into this ul via DOM manipulation -->
     </ul>
     <script>
         // add your JavaScript code here
+        let shoppingListArray = []
+
         function getItem() {
-            
+            event.preventDefault();
+            const item = document.getElementById("item").value;
+            console.log(item);
+
+            if (item !=="" && !shoppingListArray.includes(item)) {
+                shoppingListArray.push(item);
+                shoppingListArray.sort();
+
+                const shoppingList = document.getElementById("shoppingList");
+                shoppingList.innerHTML = '';
+                shoppingListArray.forEach(i => {
+                    const li = document.createElement("li");
+                    li.textContent = i;
+                    shoppingList.appendChild(li);
+                });
+
+                document.getElementById("myForm").reset();
+                console.log(shoppingListArray);
+            } else if (shoppingListArray.includes(item)) {
+                console.log("Item already exists in the list");
+            }
         }
     </script>
 </body>
