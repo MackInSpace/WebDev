@@ -26,30 +26,53 @@
     <script>
         // add your JavaScript code here
         let shoppingListArray = []
+        const shoppingList = document.getElementById("shoppingList");
 
         function getItem() {
             event.preventDefault();
             const item = document.getElementById("item").value;
             console.log(item);
 
-            if (item !=="" && !shoppingListArray.includes(item)) {
+            if (item !== "" && !shoppingListArray.includes(item)) {
                 shoppingListArray.push(item);
                 shoppingListArray.sort();
-
-                const shoppingList = document.getElementById("shoppingList");
-                shoppingList.innerHTML = '';
-                shoppingListArray.forEach(i => {
-                    const li = document.createElement("li");
-                    li.textContent = i;
-                    shoppingList.appendChild(li);
-                });
-
+                
+                removeList();
+                makeList();
                 document.getElementById("myForm").reset();
-                console.log(shoppingListArray);
             } else if (shoppingListArray.includes(item)) {
                 console.log("Item already exists in the list");
             }
         }
+
+        function makeList() {
+            shoppingList.innerHTML = '';
+            for (const item of shoppingListArray) {
+                const listItem = document.createElement("li");
+                listItem.textContent = item;
+                listItem.addEventListener("click", removeItem);
+                shoppingList.appendChild(listItem);
+            }
+        }
+
+        function removeList() {
+            while (shoppingList.firstChild) {
+                shoppingList.removeChild(shoppingList.firstChild);
+            }
+        }
+
+        function removeItem(event) {
+            const item = event.currentTarget.textContent;
+            const index = shoppingListArray.indexOf(item);
+
+            if (index > -1) {
+                shoppingListArray.splice(index, 1);
+                removeList();
+                makeList();
+            }
+            }
+        
+
     </script>
 </body>
 
