@@ -1,30 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matching Game</title>
-    <style>
-        img {
-            position: absolute;
-        }
+  <meta charset="UTF-8">
+  <title>Matching Game</title>
+  <style>
+    
+    img {
+      position: absolute;
+    }
 
-        div {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-        }
+    div {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+    }
 
-        #rightSide {
-            left: 500px;
-            border-left: 1px solid;
-        }
-    </style>
+    #rightSide {
+      left: 500px;
+      border-left: 1px solid;
+    }
+  </style>
 </head>
-<body>
-    <h1>Matching Game</h1>
-    <p>Click on the extra smiling face on the left.</p>
-    <div id="leftSide"></div>
-    <div id="rightSide"></div>
+<body onload="generateFaces()">
+
+  <h1>Matching Game</h1>
+  <p>Click on the extra smiling face on the left.</p>
+  <p id="attemptCounter">Attempts: 0</p>
+
+  <div id="leftSide"></div>
+  <div id="rightSide"></div>
+  <button id="restartButton" onclick="restartGame()" style="display: none;">Restart Game</button>
+
+  <script>
+    let numberOfFaces = 5;
+    const theLeftSide = document.getElementById('leftSide');
+    const theRightSide = document.getElementById('rightSide');
+
+    let attempts = 0;
+
+    function generateFaces() {
+      theLeftSide.innerHTML = '';
+      theRightSide.innerHTML = '';
+
+      for (let i = 0; i < numberOfFaces; i++) {
+        const face = document.createElement('img');
+        face.src = 'img/smile.png'; 
+
+        const randomTop = Math.floor(Math.random() * 400) + 1;
+        const randomLeft = Math.floor(Math.random() * 400) + 1;
+
+        face.style.top = randomTop + 'px';
+        face.style.left = randomLeft + 'px';
+
+        theLeftSide.appendChild(face);
+      }
+
+      const leftSideImages = theLeftSide.cloneNode(true);
+      leftSideImages.removeChild(leftSideImages.lastChild);
+      theRightSide.appendChild(leftSideImages);
+
+      const extraFace = theLeftSide.lastChild;
+      extraFace.addEventListener('click', nextLevel);
+
+      document.body.addEventListener('click', gameOver);
+    }
+
+    function nextLevel(event) {
+      event.stopPropagation();
+
+      document.body.removeEventListener('click', gameOver);
+      theLeftSide.lastChild.removeEventListener('click', nextLevel);
+
+      while (theLeftSide.firstChild) {
+        theLeftSide.removeChild(theLeftSide.firstChild);
+      }
+      while (theRightSide.firstChild) {
+        theRightSide.removeChild(theRightSide.firstChild);
+      }
+
+      attempts++;
+      document.getElementById('attemptCounter').textContent = `Attempts: ${attempts}`;
+
+      numberOfFaces += 1;
+      generateFaces();
+    }
+
+    function gameOver() {
+      alert(`Game Over! Total attempts: ${attempts}`);
+      
+      document.body.removeEventListener('click', gameOver);
+      theLeftSide.lastChild.removeEventListener('click', nextLevel);
+
+      attempts = 0;
+      numberOfFaces = 5;
+      generateFaces();
+      document.getElementById('restartButton').style.display = 'block';
+    }
+
+    function restartGame() {
+        attempts = 0;
+        numberOfFaces = 1;
+        generateFaces();
+        document.getElementById('restartButton').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
