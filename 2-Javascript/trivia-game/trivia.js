@@ -2,8 +2,15 @@
 const questionDiv = document.getElementById("question");
 const answerDiv = document.getElementById("answer");
 const feedbackDiv = document.getElementById("feedback");
+const playerTurnDiv = document.getElementById("playerTurn");
+const player1ScoreDiv = document.getElementById("player1Score");
+const player2ScoreDiv = document.getElementById("player2Score");
 
 let currentQuestion = null;
+
+let player1Score = 0;
+let player2Score = 0;
+
 
 function getTriviaQuestion() {
   return new Promise((resolve, reject) => {
