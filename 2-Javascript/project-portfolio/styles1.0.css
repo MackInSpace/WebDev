@@ -1,0 +1,13 @@
+body { 
+  background-color: #EFF3F6;
+}
+
+#btn-learn{
+  background-color: #2A8E9E;
+  margin-top: 1rem;
+  border: none;
+}
+#brand-name{
+  color: #001427;
+  font-weight: bold;
+}
