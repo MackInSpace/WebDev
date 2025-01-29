@@ -11,3 +11,32 @@ body {
   color: #001427;
   font-weight: bold;
 }
+
+.card {
+  border-radius: 15px;
+  background-color: #EFF3F6;
+}
+
+.form-control, .btn {
+  border-radius: 15px;
+}
+
+.container {
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.d-flex.mb-2 input {
+  margin-right: 10px;
+}
+
+#btn2 {
+  background-color: #2A8E9E;
+  border: none;
+  width: 200px;
+}
+
+.search-bar-long {
+  width: auto;
+}
