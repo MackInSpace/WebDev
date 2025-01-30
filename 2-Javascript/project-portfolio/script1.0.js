@@ -1,69 +1,67 @@
-const searchInput = document.getElementById('search-input');
-const suggestionsContainer = document.getElementById('suggestions');
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('btn2').addEventListener('click', function() {
+      const query = document.querySelector('.search-bar-long').value.trim().toLowerCase().replace(/ /g, '-');
 
-let cryptoData = [];
+      console.log('Search Query:', query); 
+      
+      if (query in cryptoIDs) {
+          fetchCryptoData(cryptoIDs[query]);
+      } else {
+          alert('Unknown cryptocurrency ID. Please enter a valid name.');
+      }
+  });
+});
 
-// Fetch cryptocurrency data using CoinGecko API
-async function fetchCryptoData() {
-  try {
-    const response = await fetch('https://api.coingecko.com/api/v3/coins/markets', {
-      qs: { vs_currency: 'usd', order: 'market_cap_desc', per_page: 250, page: 1, sparkline: false },
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    cryptoData = await response.json();
-  } catch (error) {
-    console.error('Error fetching cryptocurrency data:', error);
-  }
+// List of known cryptocurrency IDs
+const cryptoIDs = {
+  bitcoin: 'bitcoin',
+    btc: 'bitcoin',
+    ethereum: 'ethereum',
+    eth: 'ethereum',
+    dogecoin: 'dogecoin',
+    doge: 'dogecoin',
+    litecoin: 'litecoin',
+    ltc: 'litecoin',
+    ripple: 'ripple',
+    xrp: 'ripple',
+  // Add more as needed
+};
+
+// Function to fetch data from CoinGecko API
+function fetchCryptoData(query) {
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${query}`;
+
+  fetch(url)
+      .then(response => response.json())
+      .then(data => {
+          console.log('API Response:', data); 
+          if (data.length > 0) {
+              displayCryptoData(data[0]);
+          } else {
+              alert('No data found for the entered query');
+          }
+      })
+      .catch(error => {
+          console.error('Error fetching data:', error);
+          alert('Error fetching data. Please try again later.');
+      });
 }
 
-// Call the fetch function on page load
-fetchCryptoData();
+function displayCryptoData(crypto) {
+  const container = document.getElementById('crypto-result-container');
+  
+  container.innerHTML = '';
 
-searchInput.addEventListener('input', () => {
-  const query = searchInput.value.toLowerCase();
-  suggestionsContainer.innerHTML = '';
-
-  if (query.length === 0) {
-    return;
-  }
-
-  const filteredCryptos = cryptoData.filter(crypto =>
-    crypto.name.toLowerCase().includes(query) || crypto.symbol.toLowerCase().includes(query)
-  );
-
-  if (filteredCryptos.length > 0) {
-    filteredCryptos.slice(0, 10).forEach(crypto => {
-      const suggestionItem = document.createElement('div');
-      suggestionItem.classList.add('suggestion-item');
-
-      const cryptoImage = document.createElement('img');
-      cryptoImage.src = crypto.image;
-      cryptoImage.alt = crypto.name;
-
-      const cryptoName = document.createElement('span');
-      cryptoName.textContent = `${crypto.name} (${crypto.symbol.toUpperCase()})`;
-
-      suggestionItem.appendChild(cryptoImage);
-      suggestionItem.appendChild(cryptoName);
-      suggestionsContainer.appendChild(suggestionItem);
-
-      suggestionItem.addEventListener('click', () => {
-        searchInput.value = `${crypto.name} (${crypto.symbol.toUpperCase()})`;
-        suggestionsContainer.innerHTML = '';
-      });
-    });
-  } else {
-    const noResults = document.createElement('div');
-    noResults.classList.add('no-results');
-    noResults.textContent = 'No cryptocurrencies found.';
-    suggestionsContainer.appendChild(noResults);
-  }
-});
-
-// Hide suggestions when clicking outside
-document.addEventListener('click', (e) => {
-  if (!searchInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
-    suggestionsContainer.innerHTML = '';
-  }
-});
+  const resultDiv = document.createElement('div');
+  resultDiv.id = 'crypto-result';
+  resultDiv.classList.add('col-12', 'p-3', 'bg-white', 'rounded');
+  
+  resultDiv.innerHTML = `
+      <h3>${crypto.name} (${crypto.symbol.toUpperCase()})</h3>
+      <p>Current Price: $${crypto.current_price}</p>
+      <p>Market Cap: $${crypto.market_cap}</p>
+      <p>24h Change: ${crypto.price_change_percentage_24h.toFixed(2)}%</p>
+  `;
+  
+  container.appendChild(resultDiv);
+}
