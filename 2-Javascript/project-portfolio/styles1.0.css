@@ -1,13 +1,13 @@
-body { 
-  background-color: #EFF3F6;
+body {
+  background-color: #eff3f6;
 }
 
-#btn-learn{
-  background-color: #2A8E9E;
+#btn-learn {
+  background-color: #2a8e9e;
   margin-top: 1rem;
   border: none;
 }
-#brand-name{
+#brand-name {
   color: #001427;
   font-weight: bold;
 }
@@ -54,4 +54,40 @@ h5 {
 
 .card-text {
   font-size: 1rem;
+}
+
+/* Mathias Styles */
+/* Ensure the section has relative positioning */
+section {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Style the label and dropdown menu */
+#chartMenuLabel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-weight: bold;
+  display: block;
+}
+
+/* Ensure dropdown is positioned below the label */
+#dropDownMenu {
+  position: absolute;
+  top: 10px; /* Moves the dropdown below the label */
+  right: 10px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Style the chart canvas */
+canvas {
+  display: block;
+  margin-top: 80px; /* Pushes the chart down so it doesn't overlap with the dropdown */
+  width: 100%;
+  max-height: 600px;
 }

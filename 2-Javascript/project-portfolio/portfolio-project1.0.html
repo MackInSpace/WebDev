@@ -91,8 +91,31 @@
             </div>
         </div>
     </section>
+    <!-- Section 2: Graphs UI (Mathias) -->
+    <section class="container" id="graphing">
+        <label for="chart" id="chartMenuLabel"
+        >Choose your chart from the list:</label
+        >
+        <select name="dropDownMenu" id="dropDownMenu">
+        <!-- We Can disabled it -->
+        <option value="" selected>-- Select a chart --</option>
+        <option value="Bar Chart">Bar Chart</option>
+        <option value="Doughnut">Doughnut</option>
+        <option value="Multiple Line Charts">Multiple Line Charts</option>
+        <option value="Line Chart">Line Chart</option>
+        <option value="Pie Chart">Pie Chart</option>
 
+        <option value="scatter">Scatter</option>
+        </select>
+
+        <!-- Create Canvas -->
+        <canvas id="myChart"></canvas>
+    </section>
     <script src="script1.0.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+    ></script>
+    </body>
 </html>
