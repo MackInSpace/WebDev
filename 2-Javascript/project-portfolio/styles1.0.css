@@ -40,3 +40,18 @@ body {
 .search-bar-long {
   width: auto;
 }
+
+h5 {
+  color: #001427;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+}
