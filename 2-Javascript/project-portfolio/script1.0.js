@@ -69,13 +69,13 @@ function displayCryptoData(crypto) {
   resultDiv.classList.add("col-12", "p-3", "bg-white", "rounded");
 
   resultDiv.innerHTML = `
-        <h3><img src="${crypto.image}" alt="${crypto.name} logo" width="20"> ${
+      <h3><img src="${crypto.image}" alt="${crypto.name} logo" width="20"> ${
     crypto.name
   } (${crypto.symbol.toUpperCase()})</h3> <!-- Added coin logo -->
-        <p>Current Price: $${crypto.current_price}</p>
-        <p>Market Cap: $${crypto.market_cap}</p>
-        <p>24h Change: ${crypto.price_change_percentage_24h.toFixed(2)}%</p>
-    `;
+      <p>Current Price: $${crypto.current_price}</p>
+      <p>Market Cap: $${crypto.market_cap}</p>
+      <p>24h Change: ${crypto.price_change_percentage_24h.toFixed(2)}%</p>
+  `;
 
   container.appendChild(resultDiv);
 }
@@ -150,16 +150,16 @@ function displayCoins(coins, sectionTitle, sectionID) {
     card.classList.add("card", "bg-light", "rounded", "mb-4");
 
     card.innerHTML = `
-            <div class="card-body">
-                <h5 class="card-title"><img src="${coin.image}" alt="${
+          <div class="card-body">
+              <h5 class="card-title"><img src="${coin.image}" alt="${
       coin.name
     } logo" width="20"> ${
       coin.name
     } (${coin.symbol.toUpperCase()})</h5> <!-- Added coin logo -->
-                <p class="card-text">Price: $${coin.current_price}</p>
-                <p class="card-text">Market Cap: $${coin.market_cap}</p>
-            </div>
-        `;
+              <p class="card-text">Price: $${coin.current_price}</p>
+              <p class="card-text">Market Cap: $${coin.market_cap}</p>
+          </div>
+      `;
 
     container.appendChild(card);
   });
@@ -177,8 +177,6 @@ function fetchCryptoDataMathias() {
         //console.log("API Response:", data.length);
         //console.log(data);
         if (data.length > 0) {
-          data = data.filter((x) => x.market_cap_rank < 11); // get the first top 10 coins.
-
           //console.log("length ", data.length);
           myData = data;
         } else {
@@ -192,9 +190,10 @@ function fetchCryptoDataMathias() {
   }
 }
 
-// call the chart function
+// call the chart function`
 async function displayChartMathias() {
-  chartSelected(myData);
+  let data = myData.filter((x) => x.market_cap_rank < 11); // get the first top 10 coins.
+  chartSelected(data);
 }
 // All charts
 
