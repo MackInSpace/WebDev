@@ -6,26 +6,26 @@ const doNothingReturnNothing = function () {};
 const doNothingReturnNothing = () => {};
 
 // function parameters 1
-const greetUser = (userName) => {
-    console.log('hi there, ' + userName);
-};
+//const greetUser = (userName) => {
+//    console.log('hi there, ' + userName);
+//};
 //greetUser('Sam')
 
 // function parameters 2
-const greetUser = (msg = 'hi, ', userName) => {
-    console.log(userName);
-};
+//const greetUser = (msg = 'hi, ', userName) => {
+//    console.log(userName);
+//};
 //greetUser('Sam')
 
 // function parameters 3
 
-const logMessage = (msg) => {
-    console.log(msg);
-};
+//const logMessage = (msg) => {
+ //   console.log(msg);
+//};
 
-const greetUser = (func, userName) => {
-    func('hi there, ' + userName);
-};
+//const greetUser = (func, userName) => {
+ //   func('hi there, ' + userName);
+//};
 //greetUser(logMessage, 'Sam')
 
 // anonymous callback function
