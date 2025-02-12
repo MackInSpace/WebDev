@@ -8,3 +8,20 @@ const colors = [
     '#e3b8f5',
     '#fffcf2'
 ];
+
+const CandyColoredHeart = (props) => {
+
+    const randomCol = colors[Math.floor(Math.random()* colors.length)]
+
+    return (
+        <div className="heart">
+            <div className="heart-img">
+                <HeartSVG col={randomCol} />
+            </div>
+            <p className="heart-message">{props.msg}</p>
+        </div>
+    )
+
+}
+
+export default CandyColoredHeart;
