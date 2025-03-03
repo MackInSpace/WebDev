@@ -28,7 +28,7 @@ const CommentForm = ({campsiteId}) => {
                 </ModalHeader>
                 <ModalBody>
                     <Formik initialValues={{
-                        rating: '',
+                        rating: undefined,
                         commentText: '',
                         author: ''
                     }} onSubmit={handleSubmit} validate={validateCommentForm}>
