@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url(img/cryptocurrency\ background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #423902;
+}
+
+#crypto-container {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#crypto-input {
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#search-button, #add-favorite-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0066cc;
+    color: white;
+    cursor: pointer;
+}
+
+#search-button:hover, #add-favorite-button:hover {
+    background-color: #004b99;
+}
+
+#crypto-ticker {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+#favorite-coins {
+    margin-top: 20px;
+}
+
+#favorite-coins div {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #fff;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#favorite-coins div:hover {
+    background-color: #555;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #container {
+            background-color: white;
+            padding: 20px;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>InspireDesign Color Inspiration Tool</h1>
+    <button id="colorBtn">Change Color</button>
+    <button id="resetBtn">Reset Color</button>
+    <div id="container">Color Code: <span id="colorCode">#FFFFFF</span></div>
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)]
+            }
+            return color;
+        }
+
+        document.getElementById('colorBtn').addEventListener('click', function() {
+            const color = getRandomColor();
+            document.getElementById('container').style.background = color;
+            document.getElementById('colorCode').innerText = color;
+        });
+
+        document.getElementById('colorBtn').addEventListener('mouseover', function() {
+            this.style.backgroundColor = 'lightgreen';
+        });
+
+        document.getElementById('colorBtn').addEventListener('mouseout', function() {
+            this.style.backgroundColor = 'lightblue';
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function () {
+            document.getElementById('container').style.background = '#FFFFFF';
+            document.getElementById('colorCode').innerText = '#FFFFFF';
+        });
+    </script>
+</body>
+
+</html>

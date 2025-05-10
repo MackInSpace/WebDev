@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List App</title>
+    <style>
+        ul {
+            list-style-type: "\2610 ";
+            cursor: pointer;
+        }
+        @media print {
+            #myForm, #printButton {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Shopping List</h1>
+    <form id="myForm">
+        <label for="item">Add an item:</label>
+        <input id="item" type="text" name="item">
+        <button type="button" onclick="getItem(event)">Add</button>
+    </form>
+    <button  id="printButton" type="button" onclick="printList()">Print List</button>
+    <ul id="shoppingList">
+        <!-- list items will go into this ul via DOM manipulation -->
+    </ul>
+    <script>
+        // add your JavaScript code here
+        let shoppingListArray = []
+        const shoppingList = document.getElementById("shoppingList");
+
+        function getItem() {
+            event.preventDefault();
+            try {
+                const item = document.getElementById("item").value;
+                console.log(item);
+
+                if (item === "") {
+                    throw new Error("Input cannot be empty");
+                }
+
+                if (item !== "" && !shoppingListArray.includes(item)) {
+                    shoppingListArray.push(item);
+                    shoppingListArray.sort();
+
+                    removeList();
+                    makeList();
+                    document.getElementById("myForm").reset();
+                } else if (shoppingListArray.includes(item)) {
+                    console.log("Item already exists in the list");
+                }
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+
+        function makeList() {
+            shoppingList.innerHTML = '';
+            for (const item of shoppingListArray) {
+                const listItem = document.createElement("li");
+                listItem.textContent = item;
+                listItem.addEventListener("click", removeItem);
+                shoppingList.appendChild(listItem);
+            }
+        }
+
+        function removeList() {
+            while (shoppingList.firstChild) {
+                shoppingList.removeChild(shoppingList.firstChild);
+            }
+        }
+
+        function removeItem(event) {
+            try {
+                const item = event.currentTarget.textContent;
+                const index = shoppingListArray.indexOf(item);
+
+                if (index === -1) {
+                    throw new Error("Item not found in the array");
+                }
+
+                shoppingListArray.splice(index, 1);
+                removeList();
+                makeList();
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+        function printList() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>
